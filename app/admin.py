@@ -5,6 +5,7 @@ import json
 from django.contrib import admin
 from django.contrib import messages
 from django.core.urlresolvers import reverse
+from django.db.models import Avg, Count, F, Q
 from django.db.models.fields import BLANK_CHOICE_DASH
 from django.contrib.admin.models import LogEntry, DELETION
 from django.contrib.sessions.models import Session

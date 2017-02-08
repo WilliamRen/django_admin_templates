@@ -5,6 +5,7 @@ import django
 from django.db import models
 from django.db.models.signals import post_save, post_delete, post_syncdb
 from django.db.models.signals import class_prepared
+from django.db.models import Avg, Count, F, Q
 from django.contrib.auth.models import User, Group, Permission, ContentType
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _

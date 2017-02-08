@@ -4,7 +4,7 @@ import logging
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from django.db.models import Avg, Count
+from django.db.models import Avg, Count, F, Q
 from django.contrib import messages
 from django.views.decorators.http import *
 from django.contrib.auth.decorators import login_required
