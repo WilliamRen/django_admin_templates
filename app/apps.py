@@ -4,6 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class ExampleConfig(AppConfig):
-    name = 'example'
+    name = 'app'
     label = 'example'
-    verbose_name = _("example")
+    verbose_name = _("Example")
