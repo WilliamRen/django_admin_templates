@@ -37,7 +37,7 @@ class ExampleAPIView(viewsets.ModelViewSet):
     queryset = Example.objects.all()
     serializer_class = ExampleSerializer
     search_fields = ('title',)
-    filter_fields = ('title', 'ctime', 'mtime')
-    ordering_fields = ('ctime',)
+    filter_fields = ('title', 'ctime', 'mtime',)
+    ordering_fields = ('ctime', 'mtime',)
     # versioning_class = versioning.NamespaceVersioning
     permission_classes = (AllowAny,)

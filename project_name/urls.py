@@ -29,6 +29,6 @@ router.register(r'ex', ExampleAPIView)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^api/', include(router.urls)),
+    url(r'^v1/api/', include(router.urls)),
 ]
 

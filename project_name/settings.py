@@ -219,6 +219,8 @@ MAX_PAGE_SIZE = 100
 REST_FRAMEWORK = {
     # Pagination
     'PAGE_SIZE': 10,
+    'DEFAULT_VERSION': 'v1',
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.NamespaceVersioning',
     'DEFAULT_PAGINATION_CLASS': '{{ project_name }}.pagination.APIPageNumberPagination',
     'DEFAULT_PERMISSION_CLASSES': (
         # 'rest_framework.permissions.IsAdminUser',
