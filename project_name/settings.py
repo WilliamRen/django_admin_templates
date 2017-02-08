@@ -41,6 +41,10 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'import_export',
+
+    'markdown',
+    'corsheaders',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -202,4 +206,57 @@ LOGGING = {
     'root': {
         'level': 'INFO'
     }
+}
+
+
+###########################################
+# DJANGO REST FRAMEWORK
+###########################################
+PAGE_QUERY_PARAM = 'page'
+PAGE_SIZE_QUERY_PARAM = 'page_size'
+MAX_PAGE_SIZE = 100
+
+REST_FRAMEWORK = {
+    # Pagination
+    'PAGE_SIZE': 10,
+    'DEFAULT_PAGINATION_CLASS': '{{ project_name }}.pagination.APIPageNumberPagination',
+    'DEFAULT_PERMISSION_CLASSES': (
+        # 'rest_framework.permissions.IsAdminUser',
+        # 'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+        'rest_framework.renderers.AdminRenderer',
+        'rest_framework.renderers.TemplateHTMLRenderer',
+        'rest_framework_xml.renderers.XMLRenderer',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+        'rest_framework_yaml.parsers.YAMLParser',
+        'rest_framework_xml.parsers.XMLParser',
+    ),
+    'DEFAULT_THROTTLE_CLASSES': (
+        'rest_framework.throttling.AnonRateThrottle',
+    ),
+    'DEFAULT_THROTTLE_RATES': {
+        # 'anon': '10/day',
+        # 'user': '100/day',
+        # 'burst': '60/min',
+        # 'sustained': '1000/day',
+    },
+    'DEFAULT_FILTER_BACKENDS': (
+        'rest_framework.filters.SearchFilter',
+        'rest_framework.filters.OrderingFilter',
+        # 'rest_framework.filters.DjangoFilterBackend',
+        'url_filter.integrations.drf.DjangoFilterBackend',
+    ),
 }
