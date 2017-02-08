@@ -17,9 +17,18 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework import routers, serializers, viewsets
+
+from app.views import ExampleAPIView
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'ex', ExampleAPIView)
 
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^api/', include(router.urls)),
 ]
 
