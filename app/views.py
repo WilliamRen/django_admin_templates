@@ -33,7 +33,7 @@ def index(request):
     return HttpResponse(context, content_type=u"application/json", status=status)
 
 
-class ExampleAPIView(generics.RetrieveUpdateDestroyAPIView):
+class ExampleAPIView(viewsets.ModelViewSet):
     queryset = Example.objects.all()
     serializer_class = ExampleSerializer
     search_fields = ('title',)
