@@ -20,8 +20,9 @@ PROJECT_DIR = os.path.abspath(PWD)
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 APP = os.path.basename(PROJECT_DIR)
 LOG_FILE = os.path.abspath(os.path.join(BASE_DIR, "%s.log" % (APP,)))
-
-sys.path.insert(0, os.path.join(BASE_DIR, "libs"))
+LIBS_DIR = os.path.join(BASE_DIR, "libs")
+sys.path.insert(0, LIBS_DIR)
+sys.path.insert(1, os.path.join(LIBS_DIR, "django-mongoengine"))
 
 
 def get_env_variable(var_name):
