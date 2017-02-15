@@ -1,0 +1,3 @@
+[submodule "libs/django-mongoengine"]
+	path = libs/django-mongoengine
+	url = https://github.com/MongoEngine/django-mongoengine.git
