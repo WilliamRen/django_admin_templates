@@ -40,11 +40,18 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'import_export',
+    # 'import_export',
 
     'markdown',
     'corsheaders',
     'rest_framework',
+
+    'django_mongoengine',
+    'django_mongoengine.mongo_auth',
+    'django_mongoengine.mongo_admin',
+    'django_mongoengine.mongo_admin.management',
+
+    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,12 +89,29 @@ WSGI_APPLICATION = '{{ project_name }}.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/{{ docs_version }}/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# MongoDB settings
+MONGODB_DATABASES = {
+    'default': {'name': 'django_mongoengine'}
 }
+
+DATABASES = {
+    'default': {'ENGINE': 'django.db.backends.dummy'}
+}
+
+AUTH_USER_MODEL = 'mongo_auth.MongoUser'
+
+AUTHENTICATION_BACKENDS = (
+    'django_mongoengine.mongo_auth.backends.MongoEngineBackend',
+)
+
+SESSION_ENGINE = 'django_mongoengine.sessions'
 
 # Internationalization
 # https://docs.djangoproject.com/en/{{ docs_version }}/topics/i18n/

@@ -12,6 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_text, python_2_unicode_compatible
 from django.utils import timezone
 from django.contrib.auth import get_user_model
+from mongoengine import *
 
 
 @python_2_unicode_compatible
@@ -30,3 +31,22 @@ class Example(models.Model):
         verbose_name = _('Example')
         verbose_name_plural = _('Example')
         ordering = ('ctime',)
+
+
+class Choice(EmbeddedDocument):
+    choice_text = StringField(max_length=200)
+    votes = IntField(default=0)
+
+
+class Poll(Document):
+    question = StringField(max_length=200)
+    pub_date = DateTimeField(help_text='date published')
+    choices = ListField(EmbeddedDocumentField(Choice))
+
+    meta = {
+        'indexes': [
+            'question',
+            ('pub_date', '+question')
+        ]
+    }
+

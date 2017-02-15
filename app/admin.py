@@ -26,7 +26,7 @@ class ExampleResource(resources.ModelResource):
         fields = ('id', 'title', 'ctime', 'mtime')
 
 
-@admin.register(Example)
+# @admin.register(Example)
 class ExampleAdmin(ImportExportModelAdmin):
     resource_class = ExampleResource
     change_list_template = u"admin/import_export/change_list_import_export.html"
