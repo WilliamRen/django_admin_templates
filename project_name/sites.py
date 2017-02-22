@@ -14,7 +14,6 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.contrib.admin.sites import AdminSite
 from django.utils.module_loading import autodiscover_modules
-from adminplus.sites import AdminSitePlus
 
 
 __all__ = ["AdminSitePlus", "site", ]
